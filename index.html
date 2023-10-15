@@ -5,40 +5,90 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>challenge.4</title>
+    <style>
+      :root, body {
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 100;
+        color: rgba(255, 255, 255, 0.87);
+        background-color: #100c14;
+      }
+
+      #content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .form-box {
+        background-color: #23232c;
+        padding: 20px;
+        width: 350px;
+        height: 400px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-content {
+        text-align: justify;
+      }
+
+      .checkbox-label {
+        display: flex;
+      }
+
+      .checkbox-input {
+        margin-right: 10px;
+      }
+
+      .green-button {
+        background-color: #a4fcac; 
+        color: rgb(0, 0, 0);
+        padding: 15px 90px; 
+      }
+    </style>
   </head>
   <body>
-
     <div id="root"></div>
-  
-    
-    <div id='content'>
-      <h3>Password Generator</h3>
+    <div id="content">
+      <div class="form-box">
+        <h3>Password Generator</h3>
+        <label for="range">Character Length</label>
+        <input type="range" min="1" max="10" oninput="getRangeValue()" />
+        <form id="form" class="form-content">
+          <label class="checkbox-label">
+            <input type="checkbox" class="checkbox-input" />
+            Include Uppercase Letters
+          </label>
+          <p></p>
 
-      <form id='form'>
-          <div>textoParaCopiar</div>
-      
-          <label for="range">Character Length</label> <p></p>
-          <input type='range' min="1" max="10" oninput="getRangeVaue()"></input> <p></p>
-      
-          <label for="checkbox">Include Uppercase Letters</label>
-          <input type='checkbox'></input> <p></p>
-      
-          <label for="checkbox">Include Lowercase Letters</label>
-          <input type='checkbox'></input> <p></p>
-      
-          <label for="checkbox">Include Numbers</label>
-          <input type='checkbox'></input> <p></p>
-      
-          <label for="checkbox">Include Symbols</label>
-          <input type='checkbox'></input> <p></p>
-      
-      
-      
-      </form>
+          <label class="checkbox-label">
+            <input type="checkbox" class="checkbox-input" />
+            Include Lowercase Letters
+          </label>
+          <p></p>
+
+          <label class="checkbox-label">
+            <input type="checkbox" class="checkbox-input" />
+            Include Numbers
+          </label>
+          <p></p>
+
+          <label class="checkbox-label">
+            <input type="checkbox" class="checkbox-input" />
+            Include Symbols
+          </label>
+          <p></p>
+          <button type="button" class="green-button">Generate</button>
+        </form>
       </div>
-    
+    </div>
 
     <script type="module" src="/src/main.jsx"></script>
-    
   </body>
 </html>
