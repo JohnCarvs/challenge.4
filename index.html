@@ -7,7 +7,38 @@
     <title>challenge.4</title>
   </head>
   <body>
+
     <div id="root"></div>
+  
+    
+    <div id='content'>
+      <h3>Password Generator</h3>
+
+      <form id='form'>
+          <div>textoParaCopiar</div>
+      
+          <label for="range">Character Length</label> <p></p>
+          <input type='range' min="1" max="10" oninput="getRangeVaue()"></input> <p></p>
+      
+          <label for="checkbox">Include Uppercase Letters</label>
+          <input type='checkbox'></input> <p></p>
+      
+          <label for="checkbox">Include Lowercase Letters</label>
+          <input type='checkbox'></input> <p></p>
+      
+          <label for="checkbox">Include Numbers</label>
+          <input type='checkbox'></input> <p></p>
+      
+          <label for="checkbox">Include Symbols</label>
+          <input type='checkbox'></input> <p></p>
+      
+      
+      
+      </form>
+      </div>
+    
+
     <script type="module" src="/src/main.jsx"></script>
+    
   </body>
 </html>
