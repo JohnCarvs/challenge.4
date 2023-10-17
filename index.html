@@ -6,18 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>challenge.4</title>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Noto+Sans+Mono:wght@300;500&family=Playfair+Display:wght@800&family=Space+Grotesk:wght@500&display=swap');
       :root, body {
-        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        font-family: 'Noto Sans Mono', monospace;
         line-height: 1.5;
         font-weight: 100;
         color: rgba(255, 255, 255, 0.87);
         background-color: #100c14;
+        font-weight:300;
       }
 
       #content {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items:center;
         justify-content: center;
         height: 100vh;
       }
@@ -30,12 +32,13 @@
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        align-items:flex-start;
+        justify-content:end;
+        background-clip:border-box;
       }
 
       .form-content {
-        text-align: justify;
+        text-align:justify;
       }
 
       .checkbox-label {
@@ -44,51 +47,135 @@
 
       .checkbox-input {
         margin-right: 10px;
+        border-radius: 0;
+        border-color: rgb(0, 255, 64);
+        border: 1px solid rgb(74, 235, 0);
       }
 
       .green-button {
         background-color: #a4fcac; 
         color: rgb(0, 0, 0);
-        padding: 15px 90px; 
+        padding: 15px 114px;
+        font-family: 'Noto Sans Mono', monospace;
+        font-size: 19px;      
+      }
+
+      #title{
+        font-family: 'Noto Sans Mono', monospace;
+        font-size: 22px;
+        color: #767681;
+        padding: 20px;
+        width: 350px;
+        height: 400px;
+        block-size: 10%;
+        margin: 0 auto;
+        position: absolute;
+        top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #range {
+        width: 100%;
+        height: 10px;
+      }
+
+      #password{
+        background-color: #23232c;
+        font-weight: 450;
+        color:antiquewhite;
+        font-size: 30px;
+        position: absolute;
+        top: 146px;
+        left: 576px;
+        width: 330px;
+        height: 120px;
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start;
+        justify-content: center;
+      }
+      
+      #span{
+        color: #767681;
+        font-weight: 600;
       }
     </style>
   </head>
   <body>
+    <div id="password"> <span  class="placeholder" id="span">P4$5W0rD!</span> </div>
     <div id="root"></div>
     <div id="content">
       <div class="form-box">
-        <h3>Password Generator</h3>
-        <label for="range">Character Length</label>
-        <input type="range" min="1" max="10" oninput="getRangeValue()" />
+        <h3 id="title">Password Generator</h3>
+        <label for="range">Character Length</label><br>
+        <input type="range" min="1" max="12" id="range" /><br>
         <form id="form" class="form-content">
           <label class="checkbox-label">
-            <input type="checkbox" class="checkbox-input" />
+            <input type="checkbox" class="checkbox-input" id="UpperCase"/>
             Include Uppercase Letters
           </label>
           <p></p>
 
           <label class="checkbox-label">
-            <input type="checkbox" class="checkbox-input" />
+            <input type="checkbox" class="checkbox-input" id="LowerCase"/>
             Include Lowercase Letters
           </label>
           <p></p>
 
           <label class="checkbox-label">
-            <input type="checkbox" class="checkbox-input" />
+            <input type="checkbox" class="checkbox-input" id="Numbers"/>
             Include Numbers
           </label>
           <p></p>
 
           <label class="checkbox-label">
-            <input type="checkbox" class="checkbox-input" />
+            <input type="checkbox" class="checkbox-input" id="Symbols"/>
             Include Symbols
           </label>
           <p></p>
-          <button type="button" class="green-button">Generate</button>
+          <input type="submit" class="green-button" value="Generate ↦" id="button">
         </form>
       </div>
     </div>
 
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module">
+    const LowerCase = document.getElementById("LowerCase");
+    const UpperCase = document.getElementById("UpperCase");
+    const Numbers = document.getElementById("Numbers");
+    const Symbols = document.getElementById("Symbols");
+    const range = document.getElementById("range");
+    const password = document.getElementById("password");
+
+    function gerarSenha() {
+        let caracteres = "";
+        if (LowerCase.checked) {
+        caracteres += "abcdefghijklmnopqrstuvwxyz";
+        }
+        if (UpperCase.checked) {
+        caracteres += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        }
+        if (Numbers.checked) {
+        caracteres += "0123456789";
+        }
+        if (Symbols.checked) {
+        caracteres += "!@#$?%^&*()-+";
+        }
+        let senhaGerada = "";
+        for (let i = 0; i < range.value; i++) {
+        senhaGerada += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+
+    password.textContent = senhaGerada;
+    }
+
+    document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    gerarSenha();
+    });
+    </script>
   </body>
+</html>
 </html>
